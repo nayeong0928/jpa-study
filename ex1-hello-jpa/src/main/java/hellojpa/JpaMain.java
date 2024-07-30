@@ -17,11 +17,15 @@ public class JpaMain {
         try{
             // 비영속상태
             Member member=new Member();
-            member.setId(100L);
+            member.setId(101L);
             member.setName("홍길동");
 
             // 영속상태
             entityManager.persist(member);
+
+            Member findMember=entityManager.find(Member.class, 101L);
+            System.out.println("findMember.getId() = " + findMember.getId());
+            System.out.println("findMember.getName() = " + findMember.getName());
 
             transaction.commit();
         } catch (Exception e){
