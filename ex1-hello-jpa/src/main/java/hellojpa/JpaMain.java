@@ -15,18 +15,16 @@ public class JpaMain {
         transaction.begin();
 
         try{
-            // 비영속상태
-            Member member=new Member();
-            member.setId(101L);
-            member.setName("홍길동");
 
-            // 영속상태
-            entityManager.persist(member);
+            Member mem1=entityManager.find(Member.class, 101L);
+            Member mem2=entityManager.find(Member.class, 101L);
 
-            Member findMember=entityManager.find(Member.class, 101L);
-            System.out.println("findMember.getId() = " + findMember.getId());
-            System.out.println("findMember.getName() = " + findMember.getName());
-
+            if(mem1==mem2){
+                System.out.println("mem1과 mem2 같음: 영속 엔티티의 동일성 보장");
+            }
+            else {
+                System.out.println("영속 엔티티의 동일성을 보장하지 않음");
+            }
             transaction.commit();
         } catch (Exception e){
             transaction.rollback();
