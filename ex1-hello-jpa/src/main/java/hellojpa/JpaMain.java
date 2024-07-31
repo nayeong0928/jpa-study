@@ -16,16 +16,15 @@ public class JpaMain {
 
         try{
 
-            Member mem1=entityManager.find(Member.class, 101L);
-            Member mem2=entityManager.find(Member.class, 101L);
+            Member member1=new Member(102L, "홍길동");
+            Member member2=new Member(103L, "임꺽정");
 
-            if(mem1==mem2){
-                System.out.println("mem1과 mem2 같음: 영속 엔티티의 동일성 보장");
-            }
-            else {
-                System.out.println("영속 엔티티의 동일성을 보장하지 않음");
-            }
+            entityManager.persist(member1);
+            entityManager.persist(member2);
+            // persist 이후 쿼리 X
+            System.out.println("===================================");
             transaction.commit();
+            // commit 이후 쿼리 생성
         } catch (Exception e){
             transaction.rollback();
         } finally{
