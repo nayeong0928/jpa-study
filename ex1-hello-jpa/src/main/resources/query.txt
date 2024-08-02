@@ -1,0 +1,29 @@
+Hibernate:
+
+    drop table Member if exists
+Hibernate:
+
+    drop sequence if exists member_sequence
+Hibernate: create sequence member_sequence start with 1 increment by 50
+Hibernate:
+
+    create table Member (
+       id bigint not null,
+        name varchar(255),
+        roleType varchar(255),
+        primary key (id)
+    )
+
+Hibernate:
+    call next value for member_sequence
+Hibernate:
+    call next value for member_sequence
+===================================
+Hibernate:
+    /* insert hellojpa.Member
+        */ insert
+        into
+            Member
+            (name, roleType, id)
+        values
+            (?, ?, ?)
