@@ -16,13 +16,14 @@ public class JpaMain {
 
         try{
 
-            Member member1=new Member(102L, "홍길동");
-            Member member2=new Member(103L, "임꺽정");
+            Member member=new Member();
+            member.setId(104L);
+            member.setName("홍길동");
+            member.setRoleType(RoleType.USER);
+            entityManager.persist(member);
 
-            entityManager.persist(member1);
-            entityManager.persist(member2);
-            // persist 이후 쿼리 X
             System.out.println("===================================");
+
             transaction.commit();
             // commit 이후 쿼리 생성
         } catch (Exception e){
