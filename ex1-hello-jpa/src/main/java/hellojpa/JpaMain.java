@@ -17,7 +17,6 @@ public class JpaMain {
         try{
 
             Member member=new Member();
-            member.setId(104L);
             member.setName("홍길동");
             member.setRoleType(RoleType.USER);
             entityManager.persist(member);
