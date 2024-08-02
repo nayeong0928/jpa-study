@@ -21,6 +21,7 @@ public class JpaMain {
 
             entityManager.persist(member1);
             entityManager.persist(member2);
+
             // persist 이후 쿼리 X
             System.out.println("===================================");
             transaction.commit();
