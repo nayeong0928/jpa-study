@@ -9,26 +9,29 @@ public class JpaMain {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
-        EntityManager entityManager=emf.createEntityManager();
+        EntityManager em=emf.createEntityManager();
 
-        EntityTransaction transaction = entityManager.getTransaction();
+        EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
         try{
-
             Member member=new Member();
             member.setName("홍길동");
             member.setRoleType(RoleType.USER);
-            entityManager.persist(member);
 
-            System.out.println("===================================");
+            System.out.println("=persist() 시작=");
+            em.persist(member);
+            System.out.println("member.getId() = " + member.getId());
+            System.out.println("=persist() 끝=");
 
+            System.out.println("=commit() 시작=");
             transaction.commit();
-            // commit 이후 쿼리 생성
+            System.out.println("=commit() 끝=");
+
         } catch (Exception e){
             transaction.rollback();
         } finally{
-            entityManager.close();
+            em.close();
         }
 
         emf.close();
