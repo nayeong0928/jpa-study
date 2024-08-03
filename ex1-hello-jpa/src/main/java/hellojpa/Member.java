@@ -3,10 +3,14 @@ package hellojpa;
 import javax.persistence.*;
 
 @Entity
+@SequenceGenerator(name = "sequence_generator",
+sequenceName = "member_id_sequence",
+initialValue = 1,
+allocationSize = 40)
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_generator")
     private Long id;
 
     @Column
