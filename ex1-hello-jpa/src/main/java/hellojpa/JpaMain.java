@@ -16,8 +16,20 @@ public class JpaMain {
 
         try{
 
-            tx.commit();
+            Team team=new Team();
+            team.setName("TeamA");
+            em.persist(team);
+            Member member=new Member();
+            member.setName("홍길동");
+            member.setTeamId(team.getId());
+            em.persist(member);
 
+            // 회원 정보로 팀 정보를 찾을 때
+            Member findMember=em.find(Member.class, member.getId());
+            Long findTeamId= findMember.getTeamId();
+            Team findTeam=em.find(Team.class, findTeamId);
+
+            tx.commit();
         } catch (Exception e){
             tx.rollback();
         } finally{
