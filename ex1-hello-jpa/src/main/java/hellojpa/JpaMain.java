@@ -21,13 +21,13 @@ public class JpaMain {
             em.persist(team);
             Member member=new Member();
             member.setName("홍길동");
-            member.setTeamId(team.getId());
+            member.setTeam(team);
             em.persist(member);
 
             // 회원 정보로 팀 정보를 찾을 때
-            Member findMember=em.find(Member.class, member.getId());
-            Long findTeamId= findMember.getTeamId();
-            Team findTeam=em.find(Team.class, findTeamId);
+            Member findMember = em.find(Member.class, member.getId());
+            Team findTeam = findMember.getTeam();
+            System.out.println("findTeam= "+findTeam.getName());
 
             tx.commit();
         } catch (Exception e){

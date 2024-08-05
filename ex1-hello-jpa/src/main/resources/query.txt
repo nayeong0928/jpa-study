@@ -1,4 +1,21 @@
-# 조인할 때
-select * from member;
-select * from team;
-select * from member m join team t on m.team_id=t.team_id;
+Hibernate:
+
+    create table Member (
+       member_id bigint not null,
+        name varchar(255),
+        team_id bigint,
+        primary key (member_id)
+    )
+Hibernate:
+
+    create table Team (
+       team_id bigint not null,
+        name varchar(255),
+        primary key (team_id)
+    )
+Hibernate:
+
+    alter table Member
+       add constraint FK5nt1mnqvskefwe0nj9yjm4eav
+       foreign key (team_id)
+       references Team
