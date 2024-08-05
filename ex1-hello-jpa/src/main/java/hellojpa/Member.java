@@ -11,7 +11,6 @@ public class Member {
     @Id
     private long id;
     private String name;
-    private String addr;
 
     @Enumerated(EnumType.STRING) // string으로 값 저장하도록
     private RoleType roleType;
