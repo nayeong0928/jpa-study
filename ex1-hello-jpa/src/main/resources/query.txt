@@ -1,21 +1,46 @@
 Hibernate:
-
-    create table Member (
-       member_id bigint not null,
-        name varchar(255),
-        team_id bigint,
-        primary key (member_id)
-    )
+    call next value for hibernate_sequence
 Hibernate:
-
-    create table Team (
-       team_id bigint not null,
-        name varchar(255),
-        primary key (team_id)
-    )
+    call next value for hibernate_sequence
 Hibernate:
-
-    alter table Member
-       add constraint FK5nt1mnqvskefwe0nj9yjm4eav
-       foreign key (team_id)
-       references Team
+    /* insert hellojpa.Team
+        */ insert
+        into
+            Team
+            (name, team_id)
+        values
+            (?, ?)
+Hibernate:
+    /* insert hellojpa.Member
+        */ insert
+        into
+            Member
+            (name, team_id, member_id)
+        values
+            (?, ?, ?)
+Hibernate:
+    select
+        member0_.member_id as member_i1_0_0_,
+        member0_.name as name2_0_0_,
+        member0_.team_id as team_id3_0_0_,
+        team1_.team_id as team_id1_1_1_,
+        team1_.name as name2_1_1_
+    from
+        Member member0_
+    left outer join
+        Team team1_
+            on member0_.team_id=team1_.team_id
+    where
+        member0_.member_id=?
+Hibernate:
+    select
+        members0_.team_id as team_id3_0_0_,
+        members0_.member_id as member_i1_0_0_,
+        members0_.member_id as member_i1_0_1_,
+        members0_.name as name2_0_1_,
+        members0_.team_id as team_id3_0_1_
+    from
+        Member members0_
+    where
+        members0_.team_id=?
+team member: 홍길동
