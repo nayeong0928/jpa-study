@@ -16,18 +16,23 @@ public class JpaMain {
         tx.begin();
 
         try{
+            Team team=new Team();
+            team.setName("개발팀");
+            em.persist(team);
 
             Member member=new Member();
             member.setName("홍길동");
+            member.setTeam(team);
+//            team.getMembers().add(member);
             em.persist(member);
-
-            Team team=new Team();
-            team.setName("개발팀");
-            team.getMembers().add(member);
-            em.persist(team);
 
             em.flush();
             em.clear();
+
+            System.out.println("개발팀 멤버====");
+            for(Member m: team.getMembers()){
+                System.out.println("team member: "+m.getName());
+            }
 
             tx.commit();
         } catch (Exception e){

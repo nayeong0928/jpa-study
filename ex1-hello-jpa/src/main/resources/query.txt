@@ -1,11 +1,26 @@
-SELECT * FROM MEMBER;
-MEMBER_ID  	NAME  	TEAM_ID
-1	홍길동	null
-(1 row, 0 ms)
+Hibernate:
+    call next value for hibernate_sequence
+Hibernate:
+    call next value for hibernate_sequence
+Hibernate:
+    /* insert hellojpa.Team
+        */ insert
+        into
+            Team
+            (name, team_id)
+        values
+            (?, ?)
+Hibernate:
+    /* insert hellojpa.Member
+        */ insert
+        into
+            Member
+            (name, team_id, member_id)
+        values
+            (?, ?, ?)
+개발팀 멤버====
 
-SELECT * FROM TEAM;
-TEAM_ID  	NAME
-2	개발팀
-(1 row, 0 ms)
-
-=> DB에 team이 null로 들어감
+<확인>
+연관관계의 주인에만 연관관계를 세팅해줬을 경우,
+데이터베이스에는 값이 잘 들어가지만 직후
+Team에서 Member 목록을 조회했을 때 아무 것도 뜨지 않음.
