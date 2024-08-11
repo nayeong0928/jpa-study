@@ -12,6 +12,9 @@ public class Member {
 
     private String name;
 
+    @OneToOne(mappedBy = "member")
+    private Locker locker;
+
     public Long getId() {
         return id;
     }
