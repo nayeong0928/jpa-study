@@ -1,25 +1,22 @@
 package hellojpa;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member {
+public class Product {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "member_id")
+    @Id @GeneratedValue
     private Long id;
 
     private String name;
 
-    @OneToOne(mappedBy = "member")
-    private Locker locker;
-
-    @ManyToMany
-    @JoinTable(name="MEMBER_PRODUCT")
-    private List<Product> products=new ArrayList<>();
+    @ManyToMany(mappedBy = "products")
+    private List<Member> members=new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -36,5 +33,4 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
-
 }

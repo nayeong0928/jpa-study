@@ -1,1 +1,12 @@
-Locker 쪽에 외래키 생성
+Hibernate: 
+    
+    alter table MEMBER_PRODUCT 
+       add constraint FKc6hsxwm11n18ahnh5yvbj62cf 
+       foreign key (products_id) 
+       references Product
+Hibernate: 
+    
+    alter table MEMBER_PRODUCT 
+       add constraint FK8nj5db59i33lh546xrock43ne 
+       foreign key (Member_member_id) 
+       references Member
