@@ -1,9 +1,6 @@
 package jpabook.jpashop.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Item {
@@ -46,4 +43,5 @@ public class Item {
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
     }
+
 }
