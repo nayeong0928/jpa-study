@@ -1,12 +1,12 @@
-Hibernate: 
-    
-    alter table MEMBER_PRODUCT 
-       add constraint FKc6hsxwm11n18ahnh5yvbj62cf 
-       foreign key (products_id) 
-       references Product
-Hibernate: 
-    
-    alter table MEMBER_PRODUCT 
-       add constraint FK8nj5db59i33lh546xrock43ne 
-       foreign key (Member_member_id) 
-       references Member
+create table Item (
+       DTYPE varchar(31) not null,
+        id bigint not null,
+        name varchar(255),
+        price integer not null,
+        artist varchar(255),
+        author varchar(255),
+        isbn varchar(255),
+        actor varchar(255),
+        director varchar(255),
+        primary key (id)
+    )
