@@ -1,12 +1,31 @@
-create table Item (
-       DTYPE varchar(31) not null,
-        id bigint not null,
-        name varchar(255),
-        price integer not null,
-        artist varchar(255),
-        author varchar(255),
-        isbn varchar(255),
-        actor varchar(255),
-        director varchar(255),
-        primary key (id)
-    )
+Hibernate:
+    /* insert hellojpa.Movie
+        */ insert
+        into
+            Item
+            (name, price, id)
+        values
+            (?, ?, ?)
+Hibernate:
+    /* insert hellojpa.Movie
+        */ insert
+        into
+            Movie
+            (actor, director, id)
+        values
+            (?, ?, ?)
+Hibernate:
+    select
+        movie0_.id as id1_2_0_,
+        movie0_1_.name as name2_2_0_,
+        movie0_1_.price as price3_2_0_,
+        movie0_.actor as actor1_6_0_,
+        movie0_.director as director2_6_0_
+    from
+        Movie movie0_
+    inner join
+        Item movie0_1_
+            on movie0_.id=movie0_1_.id
+    where
+        movie0_.id=?
+findMovie = hellojpa.Movie@72f9f27c

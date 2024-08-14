@@ -17,15 +17,18 @@ public class JpaMain {
 
         try{
 
-            Member member=new Member();
-            member.setName("강감찬");
-            em.persist(member);
+            Movie movie=new Movie();
+            movie.setName("바람과 함께 사라지다");
+            movie.setActor("김배우");
+            movie.setDirector("김감독");
+            movie.setPrice(10000);
+            em.persist(movie);
 
-            Team team=new Team();
-            team.setName("개발팀");
-            team.getMembers().add(member);
+            em.flush();
+            em.clear();
 
-            em.persist(team);
+            Movie findMovie=em.find(Movie.class, movie.getId());
+            System.out.println("findMovie = " + findMovie);
 
             tx.commit();
         } catch (Exception e){
