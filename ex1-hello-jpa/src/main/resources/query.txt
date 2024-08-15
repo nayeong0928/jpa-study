@@ -1,20 +1,10 @@
-Hibernate:
-    /* insert hellojpa.Movie
-        */ insert
-        into
-            Movie
-            (name, price, actor, director, id)
-        values
-            (?, ?, ?, ?, ?)
-Hibernate:
-    select
-        movie0_.id as id1_2_0_,
-        movie0_.name as name2_2_0_,
-        movie0_.price as price3_2_0_,
-        movie0_.actor as actor1_6_0_,
-        movie0_.director as director2_6_0_
-    from
-        Movie movie0_
-    where
-        movie0_.id=?
-findMovie = hellojpa.Movie@712cfb63
+create table Member (
+       member_id bigint not null,
+        createdBy varchar(255),
+        createdDate timestamp,
+        modifiedBy varchar(255),
+        modifiedDate timestamp,
+        name varchar(255),
+        team_id bigint,
+        primary key (member_id)
+    )
