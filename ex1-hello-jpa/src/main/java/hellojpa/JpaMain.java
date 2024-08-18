@@ -19,19 +19,16 @@ public class JpaMain {
         try{
 
             Member member=new Member();
-            member.setName("홍길동");
+            member.setName("이순신");
             em.persist(member);
 
-            em.flush();
-            em.clear();
+            em.close();
 
-            Member findMember = em.getReference(Member.class, member.getId());
-            System.out.println("findMember.getClass() = " + findMember.getClass());
-//            System.out.println("findMember.getName() = " + findMember.getName());
+            em.getReference(Member.class, member.getId());
 
-            tx.commit();
         } catch (Exception e){
-            tx.rollback();
+
+            e.printStackTrace();
         } finally{
             em.close();
         }
