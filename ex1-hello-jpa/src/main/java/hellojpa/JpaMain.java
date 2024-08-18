@@ -20,9 +20,14 @@ public class JpaMain {
 
             Member member=new Member();
             member.setName("홍길동");
-            member.setCreatedDate(LocalDateTime.now());
-            member.setCreatedBy("kim");
             em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            Member findMember = em.getReference(Member.class, member.getId());
+            System.out.println("findMember.getClass() = " + findMember.getClass());
+//            System.out.println("findMember.getName() = " + findMember.getName());
 
             tx.commit();
         } catch (Exception e){

@@ -1,10 +1,18 @@
-create table Member (
-       member_id bigint not null,
-        createdBy varchar(255),
-        createdDate timestamp,
-        modifiedBy varchar(255),
-        modifiedDate timestamp,
-        name varchar(255),
-        team_id bigint,
-        primary key (member_id)
-    )
+Hibernate:
+    select
+        member0_.member_id as member_i1_3_0_,
+        member0_.name as name2_3_0_,
+        member0_.team_id as team_id3_3_0_,
+        team1_.team_id as team_id1_7_1_,
+        team1_.name as name2_7_1_
+    from
+        Member member0_
+    left outer join
+        Team team1_
+            on member0_.team_id=team1_.team_id
+    where
+        member0_.member_id=?
+findMember.getName() = 홍길동
+
+
+데이터를 조회하기 전에는 select문이 안 나감

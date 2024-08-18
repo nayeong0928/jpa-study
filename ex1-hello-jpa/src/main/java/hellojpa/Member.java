@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member extends BaseEntity{
+public class Member{
 
     @Id
     @GeneratedValue
@@ -13,9 +13,6 @@ public class Member extends BaseEntity{
     private Long id;
 
     private String name;
-
-    @OneToOne(mappedBy = "member")
-    private Locker locker;
 
     @ManyToMany
     @JoinTable(name="MEMBER_PRODUCT")
