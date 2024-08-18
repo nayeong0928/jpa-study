@@ -18,6 +18,11 @@ public class Main {
 
         try{
 
+            Book book=new Book();
+            book.setAuthor("김영한");
+            book.setName("jpa 표준 프로그래밍");
+            em.persist(book);
+
             tx.commit();
         } catch(Exception e){
             tx.rollback();
