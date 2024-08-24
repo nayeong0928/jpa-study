@@ -18,23 +18,17 @@ public class JpaMain {
 
         try{
 
-            Team team=new Team();
-            team.setName("개발1팀");
-            em.persist(team);
+            Child child1=new Child();
+            child1.setName("홍길동");
+            Child child2=new Child();
+            child2.setName("강감찬");
 
-            Member member=new Member();
-            member.setName("강감찬");
-            member.setTeam(team);
-            em.persist(member);
+            Parent parent=new Parent();
+            parent.setName("김유신");
+            parent.addChildren(child1);
+            parent.addChildren(child2);
 
-            em.clear();
-
-            Member m = em.find(Member.class, member.getId());
-            System.out.println("멤버의 팀 타입: "+m.getTeam().getClass());
-
-            System.out.println("=======멤버의 팀 조회할 때==========");
-            m.getTeam().getName();
-            System.out.println("=================================");
+            em.persist(parent);
 
             tx.commit();
         } catch (Exception e){
