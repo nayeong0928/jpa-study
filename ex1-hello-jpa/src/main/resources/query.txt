@@ -1,24 +1,18 @@
 Hibernate: 
-    /* insert hellojpa.Parent
-        */ insert
-        into
+    /* delete hellojpa.Child */ delete
+        from
+            Child
+        where
+            id=?
+Hibernate:
+    /* delete hellojpa.Child */ delete
+        from
+            Child
+        where
+            id=?
+Hibernate:
+    /* delete hellojpa.Parent */ delete
+        from
             Parent
-            (name, id)
-        values
-            (?, ?)
-Hibernate:
-    /* insert hellojpa.Child
-        */ insert
-        into
-            Child
-            (name, parent_id, id)
-        values
-            (?, ?, ?)
-Hibernate:
-    /* insert hellojpa.Child
-        */ insert
-        into
-            Child
-            (name, parent_id, id)
-        values
-            (?, ?, ?)
+        where
+            id=?
