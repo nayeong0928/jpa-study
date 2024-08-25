@@ -1,8 +1,24 @@
-Hibernate:
-    /* insert hellojpa.Member
-        */ insert
-        into
-            Member
-            (addr, street, zipcode, name, team_id, member_id)
-        values
-            (?, ?, ?, ?, ?, ?)
+===== member 조회 ====
+Hibernate: 
+    select
+        member0_.member_id as member_i1_5_0_,
+        member0_.name as name2_5_0_,
+        member0_.team_id as team_id3_5_0_ 
+    from
+        Member member0_ 
+    where
+        member0_.member_id=?
+===== member의 location 조회 =====
+Hibernate: 
+    select
+        locations0_.Member_member_id as Member_m1_4_0_,
+        locations0_.addr as addr2_4_0_,
+        locations0_.street as street3_4_0_,
+        locations0_.zipcode as zipcode4_4_0_ 
+    from
+        LOCATIONS locations0_ 
+    where
+        locations0_.Member_member_id=?
+location: addr
+location: addr2
+==============================

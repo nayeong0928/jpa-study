@@ -25,6 +25,17 @@ public class JpaMain {
             member.getLocations().add(new Location("addr", "street", "zipcode"));
             member.getLocations().add(new Location("addr2", "street", "zipcode"));
             em.persist(member);
+            
+            em.flush();
+            em.clear();
+
+            System.out.println("===== member 조회 ====");
+            Member findMember = em.find(Member.class, member.getId());
+            System.out.println("===== member의 location 조회 =====");
+            findMember.getLocations().forEach(location -> {
+                System.out.println("location: "+location.getAddr());
+            });
+            System.out.println("==============================");
 
             tx.commit();
         } catch (Exception e){
