@@ -24,15 +24,16 @@ public class Member{
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @Embedded
-    private Location location;
+    @ElementCollection
+    @CollectionTable(name = "LOCATIONS")
+    private List<Location> locations=new ArrayList<>();
 
-    public Location getLocation() {
-        return location;
+    public List<Location> getLocations() {
+        return locations;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
     }
 
     public Team getTeam() {

@@ -22,7 +22,8 @@ public class JpaMain {
 
             Member member=new Member();
             member.setName("홍길동");
-            member.setLocation(new Location("주소", "street", "zip"));
+            member.getLocations().add(new Location("addr", "street", "zipcode"));
+            member.getLocations().add(new Location("addr2", "street", "zipcode"));
             em.persist(member);
 
             tx.commit();
