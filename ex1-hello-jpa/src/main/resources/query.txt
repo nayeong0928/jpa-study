@@ -1,18 +1,8 @@
-Hibernate: 
-    /* delete hellojpa.Child */ delete
-        from
-            Child
-        where
-            id=?
 Hibernate:
-    /* delete hellojpa.Child */ delete
-        from
-            Child
-        where
-            id=?
-Hibernate:
-    /* delete hellojpa.Parent */ delete
-        from
-            Parent
-        where
-            id=?
+    /* insert hellojpa.Member
+        */ insert
+        into
+            Member
+            (addr, street, zipcode, name, team_id, member_id)
+        values
+            (?, ?, ?, ?, ?, ?)

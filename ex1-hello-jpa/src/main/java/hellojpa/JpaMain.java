@@ -1,5 +1,7 @@
 package hellojpa;
 
+import hellojpa.embedded.Location;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -18,23 +20,10 @@ public class JpaMain {
 
         try{
 
-            Child child1=new Child();
-            child1.setName("홍길동");
-            Child child2=new Child();
-            child2.setName("강감찬");
-
-            Parent parent=new Parent();
-            parent.setName("김유신");
-            parent.addChildren(child1);
-            parent.addChildren(child2);
-
-            em.persist(parent);
-
-            em.flush();
-            em.clear();
-
-            Parent findParent = em.find(Parent.class, parent.getId());
-            em.remove(findParent);
+            Member member=new Member();
+            member.setName("홍길동");
+            member.setLocation(new Location("주소", "street", "zip"));
+            em.persist(member);
 
             tx.commit();
         } catch (Exception e){
